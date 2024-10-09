@@ -22,7 +22,7 @@
 				</p>
 			</aside>
 
-			<button class="btn mx-auto hover:text-secondary">Order Now <ArrowRight size={24} /></button>
+			<a href="/services" class="btn link mx-auto hover:text-secondary">Order Now <ArrowRight size={24} /></a>
 		</div>
 	</div>
 
@@ -72,31 +72,29 @@
 				>
 				<span class="block text-gray-900 font-bold">We belong to you</span>
 			</p>
-			<button class="btn btn-success text-success-content">Register with us</button>
+			<button class="link btn btn-success"
+				><a href="/auth/register" class="text-success-content">Register with us</a></button
+			>
 		</article>
 	</div>
 
 	<!-- Services -->
-	<div
-		class="hero h-[80vh] bg-base px-5"
-	>
+	<div class="hero h-[80vh] bg-base px-5">
 		<div class="flex w-full flex-col md:flex-row itemx-center">
 			<div class="card bg-base-300 rounded-box grid flex-grow place-items-center w-full">
-                <ul class="menu">
-                    <h3 class="prose mb-4 font-bold">Our Services</h3>
-                    <li>Sachet Water</li>
-                    <li>Bottle Water</li>
-                    <li>Large Bottle Watter</li>
-                  </ul>
-            </div>
-			<div class="divider lg:divider-horizontal"/>
+				<ul class="menu">
+					<h3 class="prose mb-4 font-bold">Our Services</h3>
+					<li>Sachet Water</li>
+					<li>Bottle Water</li>
+					<li>Large Bottle Watter</li>
+				</ul>
+			</div>
+			<div class="divider lg:divider-horizontal" />
 			<div class="card grid flex-grow place-items-center w-full">
-                <img src="/offers.png" alt="Our Services" class="bg-contain w-[300px]">
-            </div>
+				<img src="/offers.png" alt="Our Services" class="bg-contain w-[300px]" />
+			</div>
 		</div>
 	</div>
-
-
 </section>
 
 <style>
