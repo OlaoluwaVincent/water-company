@@ -1,38 +1,36 @@
-# create-svelte
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+# Water Delivery System
 
-## Creating a project
+EverFlow is a water delivery company is saddled with the responsibility of making water available to wholesalers, retailers and end-users. You Order we Deliver and at that Quickly.
+It also provides you with the ability to know how close we are to delivering your order.
+In times of scarcity, an Order is an Order, you become our Priority.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Everflow workflow 😄
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+### Users workflow
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+* Register
+* Login
+* Place an Order
+* Make Payment (Cash, Transfer, In-app)
 
-## Developing
+### Drivers Workflow
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+* Pick up orders from factory
+* Deliver orders in an orderly manner following locations with a `near, far` approach
+* Confirm Payment
+* Confirm Delivery
+* Proceed to next location.
 
-```bash
-npm run dev
+### Admin Workflow
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+* Update Inventory
+* Settle payment disputes
+* Assign Orders to Drivers
+* Confirm payment where neccessary
 
-## Building
+## Tech Stack
 
-To create a production version of your app:
+**Client:** Svelte, DaisyUI, TailwindCSS
 
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+**Server:** Pocketbase
