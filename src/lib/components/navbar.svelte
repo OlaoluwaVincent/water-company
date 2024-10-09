@@ -33,7 +33,9 @@
 	<div class="flex-none">
 		<ul class="menu menu-horizontal px-1">
 			<li><a href="/about" class="link">About</a></li>
-			<li><a href="/settings" class="link">Settings</a></li>
+			<li><a href="/documentation" class="link" rel="noopener noreferrer">
+                Documentation
+              </a></li>
 			<li>
 				<select name="theme" id="theme" on:change={changeTheme} class="link capitalize text-sm">
 					{#each themes as theme}
