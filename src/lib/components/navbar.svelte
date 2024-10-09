@@ -11,8 +11,12 @@
 		<a href="/" class="btn btn-ghost text-xl">EverFlow</a>
 	</div>
 	<div class="flex-none">
-		<ul class="menu menu-horizontal px-1">
-			<li><a href="/about" class="link hidden md:block">About</a></li>
+		<ul class="menu menu-horizontal px-1 items-center">
+
+			<li><a href="/auth/register" class="link no-underline btn btn-accent btn-sm">Register</a></li>
+			<li><a href="/auth/login" class="link no-underline btn btn-success ml-3 btn-sm">Login</a></li>
+
+			<li><a href="/about" class="link hidden md:block ml-5">About</a></li>
 			<li>
 				<a href="/documentation" class="link hidden md:block" rel="noopener noreferrer">
 					Documentation
