@@ -28,7 +28,7 @@
 	</label>
 
 	<div class="flex-1">
-		<a href="/" class="btn btn-ghost text-xl">daisyUI</a>
+		<a href="/" class="btn btn-ghost text-xl">EverFlow</a>
 	</div>
 	<div class="flex-none">
 		<ul class="menu menu-horizontal px-1">

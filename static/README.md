@@ -38,3 +38,9 @@ In times of scarcity, an Order is an Order, you become our Priority.
 **Server:** Pocketbase
 
 ## TODO
+
+## Acknowledgements
+
+* [My Mentor Russell](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
+* [Inspiration](https://dribbble.com/shots/19546143-Paanee-Drinking-Water-Delivery-Web-Design/attachments/14674173?mode=media)
+* [How to write a Good readme](https://readme.so/)
