@@ -5,6 +5,8 @@ EverFlow is a water delivery company is saddled with the responsibility of makin
 It also provides you with the ability to know how close we are to delivering your order.
 In times of scarcity, an Order is an Order, you become our Priority.
 
+* Skip to [TODO](#todo)
+
 ## Everflow workflow 😄
 
 ### Users workflow
@@ -34,3 +36,5 @@ In times of scarcity, an Order is an Order, you become our Priority.
 **Client:** Svelte, DaisyUI, TailwindCSS
 
 **Server:** Pocketbase
+
+## TODO
