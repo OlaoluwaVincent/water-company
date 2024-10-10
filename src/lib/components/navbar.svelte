@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Menu from 'carbon-icons-svelte/lib/Menu.svelte';
+	import ShoppingCart from "carbon-icons-svelte/lib/ShoppingCart.svelte";
 </script>
 
 <nav class="navbar bg-base-100 drop-shadow-md">
@@ -12,10 +13,12 @@
 	</div>
 	<div class="flex-none">
 		<ul class="menu menu-horizontal px-1 items-center">
-
 			<li><a href="/auth/register" class="link no-underline btn btn-accent btn-sm">Register</a></li>
-			<li><a href="/auth/login" class="link no-underline btn btn-success ml-3 btn-sm">Login</a></li>
+			<li><a href="/auth/login" class="link no-underline btn btn-success ml-3 btn-sm hidden md:inline-flex">Login</a></li>
 
+			<li class="ml-3">
+				<a href="/cart" class=""><ShoppingCart size={24}/></a>
+			</li>
 			<li><a href="/about" class="link hidden md:block ml-5">About</a></li>
 			<li>
 				<a href="/documentation" class="link hidden md:block" rel="noopener noreferrer">

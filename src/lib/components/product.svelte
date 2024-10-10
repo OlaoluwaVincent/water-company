@@ -67,7 +67,11 @@
 				</aside>
 				<aside>
 					<div class="join join-horizontal border border-base-100">
-						<button class="btn join-item" on:click={increment}><AddAlt /></button>
+						<button
+							class={`btn join-item ${quantity >= product.quantity && '!btn-ghost'}`}
+							disabled={quantity >= product.quantity}
+							on:click={increment}><AddAlt /></button
+						>
 						<button class="btn join-item pointer-events-none">{quantity}</button>
 						<button
 							class={`btn join-item ${quantity <= 1 && '!btn-ghost'}`}
@@ -77,7 +81,10 @@
 					</div>
 				</aside>
 			</section>
-			<p>Total Cost: {totalCost}</p>
+			<div class="flex justify-between gap-4 items-center">
+				<p>Total Cost: {totalCost}</p>
+				<p class="text-right">Available Quantity: {product.quantity}</p>
+			</div>
 
 			<div class="card-actions justify-between mt-4">
 				<button class="btn btn-warning" on:click={() => addToCart(product)}>Add to Cart</button>

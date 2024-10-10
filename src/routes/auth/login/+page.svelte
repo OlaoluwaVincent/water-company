@@ -1,3 +1,16 @@
+<script lang="ts">
+	import pb from '$lib/config';
+
+	let email = '';
+	let password = '';
+
+	async function login() {
+		pb.collection('users')
+			.authWithPassword(email, password)
+			.catch((err) => console.log(err));
+	}
+</script>
+
 <div class="hero bg-base-200 min-h-screen">
 	<div class="hero-content flex-col lg:flex-row-reverse lg:gap-20">
 		<div class="text-center lg:text-left max-w-sm">
@@ -8,7 +21,7 @@
 			</p>
 		</div>
 		<div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-			<form class="card-body">
+			<form class="card-body" on:submit|preventDefault={login}>
 				<div class="form-control">
 					<label class="label" for="email">
 						<span class="label-text">Email</span>
@@ -16,6 +29,7 @@
 					<input
 						id="email"
 						type="email"
+						bind:value={email}
 						placeholder="email"
 						class="input input-bordered"
 						required
@@ -28,6 +42,7 @@
 					<input
 						id="password"
 						type="password"
+						bind:value={password}
 						placeholder="password"
 						class="input input-bordered"
 						required

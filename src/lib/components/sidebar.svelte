@@ -37,8 +37,10 @@
 		<ul class="menu mt-8 rounded-box">
 			<li class=""><a href="/">Home</a></li>
 			<li class=""><a href="/about">About</a></li>
+			<li class=""><a href="/cart">Cart</a></li>
+			<li class=""><a href="/orders">Orders</a></li>
             
-			<li>
+			<li class="mt-4">
 				<select name="theme" id="theme" on:change={changeTheme} class="capitalize text-sm">
 					{#each themes as theme}
 						<option value={theme} selected={theme === selectedTheme}>{theme}</option>
