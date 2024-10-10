@@ -8,6 +8,7 @@
 	let quantity: number = 1;
 	let selectedBrand: string = '';
 	let errMessage = '';
+	$: totalCost = product.pricePerPack * quantity;
 
 	function increment() {
 		quantity += 1;
@@ -24,9 +25,15 @@
 
 	function addToCart(product: any) {
 		if (!selectedBrand) return (errMessage = 'Please select a brand');
-		console.log('Product Title:', product.title);
-		console.log('Selected Brand:', selectedBrand);
-		console.log('Quantity:', quantity);
+		const item = {
+			id: product.id,
+			amount: totalCost,
+			title: product.title,
+			quantity,
+			brand: selectedBrand
+		};
+
+		console.log(item);
 	}
 </script>
 
@@ -70,6 +77,7 @@
 					</div>
 				</aside>
 			</section>
+			<p>Total Cost: {totalCost}</p>
 
 			<div class="card-actions justify-between mt-4">
 				<button class="btn btn-warning" on:click={() => addToCart(product)}>Add to Cart</button>

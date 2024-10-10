@@ -4,7 +4,7 @@
 
 	import CloseLarge from 'carbon-icons-svelte/lib/CloseLarge.svelte';
 
-	let selectedTheme = themes[11];
+	let selectedTheme = themes[5];
 
 	// Change theme function
 	function changeTheme(event: Event) {
