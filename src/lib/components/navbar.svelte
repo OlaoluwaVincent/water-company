@@ -3,6 +3,7 @@
 	import Menu from 'carbon-icons-svelte/lib/Menu.svelte';
 	import ShoppingCart from 'carbon-icons-svelte/lib/ShoppingCart.svelte';
 	import userStore from '$lib/stores/user';
+	import { cartStore } from '$lib/stores/cart';
 
 	function handleLogout() {
 		pb.authStore.clear();
@@ -30,10 +31,12 @@
 					>
 				</li>
 			{:else}
-				<button on:click={handleLogout} class="link no-underline btn btn-accent btn-sm">Logout</button>
+				<button on:click={handleLogout} class="link no-underline btn btn-accent btn-sm"
+					>Logout</button
+				>
 			{/if}
 			<li class="ml-3">
-				<a href="/cart" class=""><ShoppingCart size={24} /></a>
+				<a href="/cart" class=""><ShoppingCart size={24} />{$cartStore.length}</a>
 			</li>
 			<li><a href="/about" class="link hidden md:block ml-5">About</a></li>
 			<li>
