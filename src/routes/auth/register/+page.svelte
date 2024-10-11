@@ -5,13 +5,33 @@
 	let fullname: string = '';
 	let confirmPass: string = '';
 	let errMessage = '';
+	let isLoading = false;
 
 	function handleSubmit() {
-		if (password.length < 8) return (errMessage = 'Password should be atleast 7 characters.');
-		if (password !== confirmPass) return (errMessage = 'Passwords do not match');
-	}
+		isLoading = true;
+		if (password.length < 8) {
+			errMessage = 'Password should be atleast 7 characters.';
+			isLoading = false;
+		}
+		if (password !== confirmPass) {
+			errMessage = 'Passwords do not match';
+			isLoading = false;
+		}
 
-	pb.collection('users').create({});
+		pb.collection('users')
+			.create({
+				email: email.toLowerCase(),
+				password,
+				passwordConfirm: confirmPass,
+				name: fullname,
+				role: 'customer'
+			})
+			.then((res) => console.log(res))
+			.catch((err) => {
+				errMessage = err.data.data.email.message || err.data.message;
+			})
+			.finally(() => (isLoading = false));
+	}
 </script>
 
 <div class="hero bg-base-200 min-h-[calc(100vh-68px)">
@@ -86,7 +106,12 @@
 					>
 				</label>
 				<div class="form-control mt-6">
-					<button type="submit" class="btn btn-primary">Register</button>
+					<button type="submit" class="btn btn-primary">
+						{#if isLoading}
+							<span class="loading loading-spinner"></span>
+						{/if}
+						Register
+					</button>
 				</div>
 			</form>
 		</div>
