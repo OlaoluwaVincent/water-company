@@ -1,5 +1,8 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 	import pb from '$lib/config';
+	let prev = $page.url.searchParams.get('prev');
 
 	let email = '';
 	let password = '';
@@ -8,6 +11,12 @@
 		pb.collection('users')
 			.authWithPassword(email, password)
 			.catch((err) => console.log(err));
+
+		if (prev !== null) {
+			goto(prev);
+		} else {
+			console.log('aint goin nada')
+		}
 	}
 </script>
 
