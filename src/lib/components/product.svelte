@@ -1,9 +1,12 @@
 <script lang="ts">
 	import AddAlt from 'carbon-icons-svelte/lib/AddAlt.svelte';
 	import SubtractAlt from 'carbon-icons-svelte/lib/SubtractAlt.svelte';
-
-	export let product;
 	import pb from '$lib/config';
+	import type { ProductsResponse } from '$lib/types/pocketbase-types';
+	import { clearMessage, message, saveToCart } from '$lib/stores/cart';
+	import Toast from './toast.svelte';
+
+	export let product: ProductsResponse;
 
 	let quantity: number = 1;
 	let selectedBrand: string = '';
@@ -23,21 +26,41 @@
 		selectedBrand = target.value;
 	}
 
-	function addToCart(product: any) {
+	function addToCart(product: ProductsResponse) {
 		if (!selectedBrand) return (errMessage = 'Please select a brand');
-		const item = {
-			id: product.id,
+		saveToCart({
+			product: product.id,
 			amount: totalCost,
-			title: product.title,
-			quantity,
+			paymentStatus: false,
+			user: pb.authStore.model?.id,
+			quantity: quantity,
 			brand: selectedBrand
-		};
+		});
 
-		console.log(item);
+		// pb.collection('orders')
+		// 	.create<OrdersRecord>({
+		// 		product: product.id,
+		// 		amount: totalCost,
+		// 		paymentStatus: false,
+		// 		user: pb.authStore.model?.id,
+		// 		quantity: quantity,
+		// 		brand: selectedBrand
+		// 	})
+		// 	.then(() => {
+		// 		toast.ok = true;
+		// 		toast.message = 'Order Created Successfully';
+		// 	})
+		// 	.catch((err) => {
+		// 		toast.message = err.data.message || 'Failed to created Order';
+		// 		toast.err = true;
+		// 	});
 	}
 </script>
 
 <section class="px-5 max-w-3xl w-full mx-auto">
+	{#if $message}
+		<Toast toast={$message} on:clearToast={() => clearMessage()} toastType="success" />
+	{/if}
 	<div class="card md:card-side bg-base-content text-base-100 shadow-xl">
 		<figure class="md:px-5 w-full md:max-w-[300px]">
 			<img src={pb.getFileUrl(product, product.image)} alt="Album" class="rounded-lg" />
@@ -54,12 +77,12 @@
 					{#if product.brands}
 						<select
 							name="brands"
-							id="brands"
+							id={product.title}
 							class="select w-full max-w-xs"
 							on:change={handleSelectedBrand}
 						>
 							<option disabled selected>Select Brand</option>
-							{#each product.brands as brand}
+							{#each product.brands as brand, i}
 								<option value={brand}>{brand}</option>
 							{/each}
 						</select>
