@@ -1,25 +1,10 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { themes } from '$lib/themes';
-
 	import CloseLarge from 'carbon-icons-svelte/lib/CloseLarge.svelte';
+	import userTheme, { themes } from '$lib/stores/theme';
 
-	let selectedTheme = themes[5];
-
-	// Change theme function
 	function changeTheme(event: Event) {
 		const target = event.target as HTMLSelectElement;
-		selectedTheme = target.value;
-	}
-
-	onMount(() => {
-		if (typeof document !== 'undefined') {
-			document.body.setAttribute('data-theme', selectedTheme);
-		}
-	});
-
-	$: if (typeof document !== 'undefined') {
-		document.body.setAttribute('data-theme', selectedTheme);
+		$userTheme = target.value;
 	}
 </script>
 
@@ -39,11 +24,11 @@
 			<li class=""><a href="/about">About</a></li>
 			<li class=""><a href="/cart">Cart</a></li>
 			<li class=""><a href="/orders">Orders</a></li>
-            
+
 			<li class="mt-4">
 				<select name="theme" id="theme" on:change={changeTheme} class="capitalize text-sm">
 					{#each themes as theme}
-						<option value={theme} selected={theme === selectedTheme}>{theme}</option>
+						<option value={theme} selected={theme === $userTheme}>{theme}</option>
 					{/each}
 				</select>
 			</li>
