@@ -1,4 +1,5 @@
 import PocketBase from 'pocketbase'
+import type { TypedPocketBase } from './types/pocketbase-types';
 
 const url = import.meta.env.VITE_ENVIRONMENT == 'DEVELOPMENT' ?
     import.meta.env.VITE_LOCALPOCKET_URL :
@@ -6,7 +7,7 @@ const url = import.meta.env.VITE_ENVIRONMENT == 'DEVELOPMENT' ?
 
 
 
-const pb = new PocketBase(url);
+const pb = new PocketBase(url) as TypedPocketBase;
 
 export default pb;
 
