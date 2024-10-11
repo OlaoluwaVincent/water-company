@@ -7,6 +7,7 @@
 	let products: any = [];
 	let isLoading: boolean = true;
 
+	// Fetch collection onMount||Render
 	onMount(() => {
 		pb.collection('products')
 			.getList()
@@ -19,9 +20,9 @@
 				isLoading = false;
 			});
 	});
-</script>
+</script> 
 
-<div>
+<div class="py-10">
 	{#if isLoading}
 		<p class="animate-pulse">Loading...</p>
 	{:else if !products || products.length === 0}
