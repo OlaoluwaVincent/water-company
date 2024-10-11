@@ -18,6 +18,7 @@ export default {
 			"luxury",
 			"business",
 			"coffee",
+			"nord",
 			// "halloween",
 			// "forest",
 			// "aqua",
@@ -42,7 +43,6 @@ export default {
 			// "acid",
 			// "lemonade",
 			// "dim",
-			// "nord",
 		]
 	}
 };
