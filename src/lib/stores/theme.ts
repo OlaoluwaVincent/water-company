@@ -12,8 +12,8 @@ export let themes = ["light",
     "coffee",]
 
 if (browser) {
-    localStorage.theme = themes[5]
-    userTheme = writable(localStorage.theme || themes[5]);
+    localStorage.theme = localStorage.theme || themes[5]
+    userTheme = writable(localStorage.theme);
     userTheme.subscribe((value: string) => localStorage.theme = value)
 }
 

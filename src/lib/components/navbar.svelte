@@ -38,7 +38,6 @@
 			<li class="ml-3">
 				<a href="/cart" class=""><ShoppingCartIcon size={24} />{$cartStore.length}</a>
 			</li>
-			<li><a href="/about" class="link hidden md:block ml-5">About</a></li>
 			<li>
 				<a href="/documentation" class="link hidden md:block" rel="noopener noreferrer">
 					Documentation

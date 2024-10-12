@@ -27,9 +27,19 @@
 			<li class=""><a href="/orders">Orders</a></li>
 
 			<li class="mt-4">
-				<select name="theme" id="theme" on:change={changeTheme} class="select select-bordered capitalize text-sm" bind:value={$userTheme}>
+				<select
+					name="theme"
+					id="theme"
+					bind:value={$userTheme}
+					on:change={changeTheme}
+					class="select select-bordered capitalize text-sm"
+				>
 					{#each themes as theme}
-						<option class="bg-secondary-content text-secondary" value={theme} selected={theme === $userTheme}>{theme}</option>
+						<option
+							class="bg-secondary-content text-secondary"
+							value={theme}
+							selected={theme === $userTheme}>{theme}</option
+						>
 					{/each}
 				</select>
 			</li>

@@ -7,7 +7,7 @@
 
 <section>
 	<div
-		class="hero h-[calc(100vh-64px)] md:h-[calc(100vh-68px)] bg-base-content"
+		class="hero h-[90vh] bg-base-content"
 		style="background-image: url(/lightwater.jpg);"
 	>
 		<!-- Hero -->
@@ -22,43 +22,53 @@
 				</p>
 			</aside>
 
-			<a href="/services" class="btn link mx-auto hover:text-secondary">Order Now <ArrowRightIcon size={24} /></a>
+			<a href="/services" class="btn link mx-auto hover:text-secondary"
+				>Order Now <ArrowRightIcon size={24} /></a
+			>
 		</div>
 	</div>
 
 	<!-- Banner -->
 	<div
-		class="flex gap-3 justify-evenly py-8 px-5 md:px-10 min-h-28 text-primary-content text-center"
+		class="flex gap-3 justify-evenly py-20 px-2 md:px-10 min-h-28 text-primary-content text-center"
 	>
-		<article class="card bg-primary hover:bg-accent">
-			<div class="card-body p-3 md:p-8">
-				<div class="flex items-center gap-4">
-					<DeliveryIcon class="size-5 lg:size-8" /> <span class="text-xl">40</span>
-				</div>
-				<h3 class="text-sm md:text-base lg:text-lg font-cursive font-bold">Deliveries</h3>
-			</div>
-		</article>
-		<article class="card bg-primary hover:bg-accent">
-			<div class="card-body p-3 md:p-8">
+		<article class="card bg-primary hover:bg-accent w-[100px]">
+			<div class="card-body px-3 md:p-8">
 				<div class="flex items-center gap-4">
 					<CustomerServiceIcon class="size-5 lg:size-8" /> <span class="text-xl">40</span>
 				</div>
-				<h3 class="text-sm md:text-base lg:text-lg font-cursive font-bold">Satisfied Customer</h3>
+				<h3 class="text-wrap text-center text-sm md:text-base lg:text-lg font-cursive font-bold">
+					Satisfied Customer
+				</h3>
 			</div>
 		</article>
-		<article class="card bg-primary hover:bg-accent">
-			<div class="card-body p-3 md:p-8">
+
+		<article class="card bg-primary hover:bg-accent w-[100px]">
+			<div class="card-body px-3 md:p-8">
+				<div class="flex items-center gap-4">
+					<DeliveryIcon class="size-5 lg:size-8" /> <span class="text-xl">40</span>
+				</div>
+				<h3 class="text-wrap text-center text-sm md:text-base lg:text-lg font-cursive font-bold">
+					Deliveries
+				</h3>
+			</div>
+		</article>
+
+		<article class="card bg-primary hover:bg-accent w-[100px]">
+			<div class="card-body px-3 md:p-8">
 				<div class="flex items-center gap-4">
 					<LocationIcon class="size-5 lg:size-8" /> <span class="text-xl">40</span>
 				</div>
-				<h3 class="text-sm md:text-base lg:text-lg font-cursive font-bold">Drop Locations</h3>
+				<h3 class="text-wrap text-center text-sm md:text-base lg:text-lg font-cursive font-bold">
+					Drop Locations
+				</h3>
 			</div>
 		</article>
 	</div>
 
 	<!-- Marketing Caption -->
 	<div
-		class="hero h-[calc(100svh-68px)] bg-warning hero-background"
+		class="hero h-[90vh] bg-warning hero-background"
 		style="background-image: url(/splash.png);"
 	>
 		<article class="prose flex items-center flex-col">
@@ -79,14 +89,15 @@
 	</div>
 
 	<!-- Services -->
-	<div class="hero h-[80vh] bg-base px-5">
+	<div class="hero h-[90vh] bg-base px-5 py-10">
 		<div class="flex w-full flex-col md:flex-row itemx-center">
-			<div class="card bg-base-300 rounded-box grid flex-grow place-items-center w-full">
-				<ul class="menu">
+			<div class="card bg-base-300 rounded-box grid flex-grow place-items-center w-full py-3">
+				<ul class="menu space-y-3">
 					<h3 class="prose mb-4 font-bold">Our Services</h3>
 					<li>Sachet Water</li>
 					<li>Bottle Water</li>
 					<li>Large Bottle Watter</li>
+					<li>Ice block (Bags and Cubes)</li>
 				</ul>
 			</div>
 			<div class="divider lg:divider-horizontal" />

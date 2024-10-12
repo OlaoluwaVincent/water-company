@@ -1,12 +1,17 @@
 import { browser } from '$app/environment';
-import type { OrdersRecord } from '$lib/types/pocketbase-types';
 import { writable } from 'svelte/store';
 
-export interface CartItems extends OrdersRecord {
-    title: string
-    image: string
-    randomId: string
-    price: number
+export interface CartItems {
+    randomId: string;
+    product: string;
+    amount: number;
+    price: number;
+    paymentStatus: boolean;
+    user: string;
+    quantity: number;
+    brand: string;
+    image: string;
+    title: string;
 }
 
 const initialCart = browser && JSON.parse(localStorage.cart || '[]') as CartItems[];

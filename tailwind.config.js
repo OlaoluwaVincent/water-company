@@ -3,22 +3,25 @@ export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		extend: {
-			fontFamily:{
-        cursive: ['Montserrat Alternates', 'sans-serif'],
-      }
+			fontFamily: {
+				cursive: ['Montserrat Alternates', 'sans-serif']
+			},
+			screens: {
+				tablet: '820px'
+			}
 		}
 	},
 	plugins: [require('@tailwindcss/typography'), require('daisyui')],
 	daisyui: {
 		themes: [
-			"light",
-			"winter",
-			"synthwave",
-			"cyberpunk",
-			"luxury",
-			"business",
-			"coffee",
-			"nord",
+			'light',
+			'winter',
+			'synthwave',
+			'cyberpunk',
+			'luxury',
+			'business',
+			'coffee',
+			'nord'
 			// "halloween",
 			// "forest",
 			// "aqua",

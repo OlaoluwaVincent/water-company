@@ -7,7 +7,7 @@
 	export let cartItem: CartItems;
 </script>
 
-<div class="card card-side bg-base-content text-base-100 shadow-xl max-w-2xl mx-auto w-full">
+<div class="card card-side bg-base-content text-base-100 shadow-xl max-w-lg mx-auto w-full">
 	<figure class=" pl-1 md:pl-4 w-[120px] md:w-[200px] md:h-[200px] overflow-hidden">
 		<img src={cartItem.image} alt="Album" class="rounded-lg h-full w-full object-contain" />
 	</figure>

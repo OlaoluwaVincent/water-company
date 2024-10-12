@@ -3,11 +3,11 @@
 	import SubtractAltIcon from 'carbon-icons-svelte/lib/SubtractAlt.svelte';
 	import pb from '$lib/config';
 	import { v4 as uuidv4 } from 'uuid';
-	import type { ProductsResponse } from '$lib/types/pocketbase-types';
 	import { clearMessage, message, saveToCart } from '$lib/stores/cart';
 	import Toast from './toast.svelte';
+	import type { ProductRes } from '$lib/types/type';
 
-	export let product: ProductsResponse;
+	export let product: ProductRes;
 
 	let quantity: number = 1;
 	let selectedBrand: string = '';
@@ -27,7 +27,7 @@
 		selectedBrand = target.value;
 	}
 
-	function addToCart(product: ProductsResponse) {
+	function addToCart(product: ProductRes) {
 		if (!selectedBrand) return (errMessage = 'Please select a brand');
 		saveToCart({
 			randomId: uuidv4(),
@@ -41,24 +41,6 @@
 			image: pb.getFileUrl(product, product.image),
 			title: product.title
 		});
-
-		// pb.collection('orders')
-		// 	.create<OrdersRecord>({
-		// 		product: product.id,
-		// 		amount: totalCost,
-		// 		paymentStatus: false,
-		// 		user: pb.authStore.model?.id,
-		// 		quantity: quantity,
-		// 		brand: selectedBrand
-		// 	})
-		// 	.then(() => {
-		// 		toast.ok = true;
-		// 		toast.message = 'Order Created Successfully';
-		// 	})
-		// 	.catch((err) => {
-		// 		toast.message = err.data.message || 'Failed to created Order';
-		// 		toast.err = true;
-		// 	});
 	}
 </script>
 

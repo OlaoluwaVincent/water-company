@@ -35,18 +35,16 @@ export type AuthSystemFields<T = never> = {
 
 // Record types for each collection
 
-export type OrdersRecord = {
+export type OrdersRecord<Torder = unknown> = {
 	amount: number
-	brand: string
-	outstanding?: number
+	order: null | Torder
+	outstanding: number
 	paymentStatus?: boolean
-	product?: RecordIdString
-	quantity: number
-	user: RecordIdString
+	user?: RecordIdString
 }
 
-export type ProductsRecord<Tbrands = string[]> = {
-	brands: string[] | Tbrands
+export type ProductsRecord<Tbrands = unknown> = {
+	brands: null | Tbrands
 	image: string
 	pricePerPack: number
 	quantity: number
@@ -60,8 +58,8 @@ export type UsersRecord = {
 }
 
 // Response types include system fields and match responses from the PocketBase API
-export type OrdersResponse<Texpand = unknown> = Required<OrdersRecord> & BaseSystemFields<Texpand>
-export type ProductsResponse<Tbrands = string[], Texpand = unknown> = Required<ProductsRecord<Tbrands>> & BaseSystemFields<Texpand>
+export type OrdersResponse<Torder = unknown, Texpand = unknown> = Required<OrdersRecord<Torder>> & BaseSystemFields<Texpand>
+export type ProductsResponse<Tbrands = unknown, Texpand = unknown> = Required<ProductsRecord<Tbrands>> & BaseSystemFields<Texpand>
 export type UsersResponse<Texpand = unknown> = Required<UsersRecord> & AuthSystemFields<Texpand>
 
 // Types containing all Records and Responses, useful for creating typing helper functions
