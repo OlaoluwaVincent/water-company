@@ -7,26 +7,22 @@
 	export let cartItem: CartItems;
 </script>
 
-<div class="card card-side bg-base-content text-base-100 shadow-xl max-w-xl mx-auto">
-	<figure class=" pl-1 md:pl-4 w-[150px] md:w-[200px] h-[150px] md:h-[200px]">
-		<img
-			src={cartItem.image}
-			alt="Album"
-			class="rounded-lg h-full w-full object-contain overflow-hidden"
-		/>
+<div class="card card-side bg-base-content text-base-100 shadow-xl max-w-2xl mx-auto w-full">
+	<figure class=" pl-1 md:pl-4 w-[120px] md:w-[200px] md:h-[200px] overflow-hidden">
+		<img src={cartItem.image} alt="Album" class="rounded-lg h-full w-full object-contain" />
 	</figure>
-	<div class="card-body">
+	<div class="card-body p-4 md:p-8 ">
 		<aside class="badge badge-primary">
 			{cartItem.brand}
 		</aside>
 		<h2 class="card-title text-nowrap">
 			{cartItem.title}
-			<button on:click={() => deleteOnFromCart(cartItem.randomId)} class="ml-10"
+			<button on:click={() => deleteOnFromCart(cartItem.randomId)} class="pl-2"
 				><TrashCan class="text-red-700 size-6 cursor-pointer" /></button
 			>
 		</h2>
 
-		<aside>
+		<aside class="">
 			<div class="join join-horizontal border border-base-100">
 				<button class={`btn btn-sm join-item `} on:click={() => increment(cartItem.randomId)}
 					><AddAltIcon /></button
