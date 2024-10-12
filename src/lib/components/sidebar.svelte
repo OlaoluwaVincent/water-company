@@ -1,5 +1,5 @@
 <script lang="ts">
-	import CloseLarge from 'carbon-icons-svelte/lib/CloseLarge.svelte';
+	import CloseLargeIcon from 'carbon-icons-svelte/lib/CloseLarge.svelte';
 	import userTheme, { themes } from '$lib/stores/theme';
 
 	function changeTheme(event: Event) {
@@ -16,12 +16,13 @@
 			aria-label="close sidebar"
 			class="absolute top-3 right-5 z-50 btn btn-ghost btn-circle drawer-overlay"
 		>
-			<CloseLarge size={20} />
+			<CloseLargeIcon size={20} />
 		</label>
 
 		<ul class="menu mt-8 rounded-box">
 			<li class=""><a href="/">Home</a></li>
 			<li class=""><a href="/about">About</a></li>
+			<li class=""><a href="/services">Our Products</a></li>
 			<li class=""><a href="/cart">Cart</a></li>
 			<li class=""><a href="/orders">Orders</a></li>
 

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import pb from '$lib/config';
-	import Menu from 'carbon-icons-svelte/lib/Menu.svelte';
-	import ShoppingCart from 'carbon-icons-svelte/lib/ShoppingCart.svelte';
+	import MenuIcon from 'carbon-icons-svelte/lib/Menu.svelte';
+	import ShoppingCartIcon from 'carbon-icons-svelte/lib/ShoppingCart.svelte';
 	import userStore from '$lib/stores/user';
 	import { cartStore } from '$lib/stores/cart';
 
@@ -12,7 +12,7 @@
 
 <nav class="navbar bg-base-100 drop-shadow-md">
 	<label for="my-drawer-2" class="btn btn-ghost btn-circle drawer-button">
-		<Menu size={32} />
+		<MenuIcon size={32} />
 	</label>
 
 	<div class="flex-1">
@@ -36,7 +36,7 @@
 				>
 			{/if}
 			<li class="ml-3">
-				<a href="/cart" class=""><ShoppingCart size={24} />{$cartStore.length}</a>
+				<a href="/cart" class=""><ShoppingCartIcon size={24} />{$cartStore.length}</a>
 			</li>
 			<li><a href="/about" class="link hidden md:block ml-5">About</a></li>
 			<li>

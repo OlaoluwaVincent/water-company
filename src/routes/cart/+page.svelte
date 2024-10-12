@@ -1,7 +1,11 @@
 <script lang="ts">
-	import { cartStore } from "$lib/stores/cart";
+	import CartItem from '$lib/components/cartItem.svelte';
+	import { cartStore } from '$lib/stores/cart';
 
-    console.log($cartStore)
 </script>
 
-<p>Hi there cart page 🙂 </p>
+<div class="p-5 flex flex-col gap-8">
+	{#each $cartStore as cartItem, i}
+		<CartItem {cartItem} />
+	{/each}
+</div>

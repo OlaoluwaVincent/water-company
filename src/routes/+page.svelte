@@ -1,8 +1,8 @@
 <script>
-	import ArrowRight from 'carbon-icons-svelte/lib/ArrowRight.svelte';
-	import CustomerService from 'carbon-icons-svelte/lib/CustomerService.svelte';
-	import Delivery from 'carbon-icons-svelte/lib/Delivery.svelte';
-	import Location from 'carbon-icons-svelte/lib/Location.svelte';
+	import ArrowRightIcon from 'carbon-icons-svelte/lib/ArrowRight.svelte';
+	import CustomerServiceIcon from 'carbon-icons-svelte/lib/CustomerService.svelte';
+	import DeliveryIcon from 'carbon-icons-svelte/lib/Delivery.svelte';
+	import LocationIcon from 'carbon-icons-svelte/lib/Location.svelte';
 </script>
 
 <section>
@@ -22,7 +22,7 @@
 				</p>
 			</aside>
 
-			<a href="/services" class="btn link mx-auto hover:text-secondary">Order Now <ArrowRight size={24} /></a>
+			<a href="/services" class="btn link mx-auto hover:text-secondary">Order Now <ArrowRightIcon size={24} /></a>
 		</div>
 	</div>
 
@@ -33,7 +33,7 @@
 		<article class="card bg-primary hover:bg-accent">
 			<div class="card-body p-3 md:p-8">
 				<div class="flex items-center gap-4">
-					<Delivery class="size-5 lg:size-8" /> <span class="text-xl">40</span>
+					<DeliveryIcon class="size-5 lg:size-8" /> <span class="text-xl">40</span>
 				</div>
 				<h3 class="text-sm md:text-base lg:text-lg font-cursive font-bold">Deliveries</h3>
 			</div>
@@ -41,7 +41,7 @@
 		<article class="card bg-primary hover:bg-accent">
 			<div class="card-body p-3 md:p-8">
 				<div class="flex items-center gap-4">
-					<CustomerService class="size-5 lg:size-8" /> <span class="text-xl">40</span>
+					<CustomerServiceIcon class="size-5 lg:size-8" /> <span class="text-xl">40</span>
 				</div>
 				<h3 class="text-sm md:text-base lg:text-lg font-cursive font-bold">Satisfied Customer</h3>
 			</div>
@@ -49,7 +49,7 @@
 		<article class="card bg-primary hover:bg-accent">
 			<div class="card-body p-3 md:p-8">
 				<div class="flex items-center gap-4">
-					<Location class="size-5 lg:size-8" /> <span class="text-xl">40</span>
+					<LocationIcon class="size-5 lg:size-8" /> <span class="text-xl">40</span>
 				</div>
 				<h3 class="text-sm md:text-base lg:text-lg font-cursive font-bold">Drop Locations</h3>
 			</div>

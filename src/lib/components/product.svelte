@@ -1,7 +1,8 @@
 <script lang="ts">
-	import AddAlt from 'carbon-icons-svelte/lib/AddAlt.svelte';
-	import SubtractAlt from 'carbon-icons-svelte/lib/SubtractAlt.svelte';
+	import AddAltIcon from 'carbon-icons-svelte/lib/AddAlt.svelte';
+	import SubtractAltIcon from 'carbon-icons-svelte/lib/SubtractAlt.svelte';
 	import pb from '$lib/config';
+	import { v4 as uuidv4 } from 'uuid';
 	import type { ProductsResponse } from '$lib/types/pocketbase-types';
 	import { clearMessage, message, saveToCart } from '$lib/stores/cart';
 	import Toast from './toast.svelte';
@@ -29,12 +30,16 @@
 	function addToCart(product: ProductsResponse) {
 		if (!selectedBrand) return (errMessage = 'Please select a brand');
 		saveToCart({
+			randomId: uuidv4(),
 			product: product.id,
 			amount: totalCost,
+			price: product.pricePerPack,
 			paymentStatus: false,
 			user: pb.authStore.model?.id,
 			quantity: quantity,
-			brand: selectedBrand
+			brand: selectedBrand,
+			image: pb.getFileUrl(product, product.image),
+			title: product.title
 		});
 
 		// pb.collection('orders')
@@ -93,13 +98,13 @@
 						<button
 							class={`btn join-item ${quantity >= product.quantity && '!btn-ghost'}`}
 							disabled={quantity >= product.quantity}
-							on:click={increment}><AddAlt /></button
+							on:click={increment}><AddAltIcon /></button
 						>
 						<button class="btn join-item pointer-events-none">{quantity}</button>
 						<button
 							class={`btn join-item ${quantity <= 1 && '!btn-ghost'}`}
 							disabled={quantity <= 1}
-							on:click={decrement}><SubtractAlt /></button
+							on:click={decrement}><SubtractAltIcon /></button
 						>
 					</div>
 				</aside>
