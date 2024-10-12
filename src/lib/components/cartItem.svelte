@@ -36,8 +36,8 @@
 			</div>
 		</aside>
 		<div class="flex justify-between gap-4 items-center">
-			<p class="text-nowrap">Total:<br /> <b>{cartItem.amount}</b></p>
-			<p class="text-right text-nowrap">Quantity: <br /><b>{cartItem.quantity}</b></p>
+			<p class="text-nowrap">Qty: <b>{cartItem.quantity}</b></p>
+			<p class="text-nowrap text-right">Total: <b>{cartItem.amount}</b></p>
 		</div>
 	</div>
 </div>
