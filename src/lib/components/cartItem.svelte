@@ -9,7 +9,11 @@
 
 <div class="card card-side bg-base-content text-base-100 shadow-xl max-w-xl mx-auto">
 	<figure class=" pl-1 md:pl-4 w-[150px] md:w-[200px] h-[150px] md:h-[200px]">
-		<img src={cartItem.image} alt="Album" class="rounded-lg h-full w-full object-contain overflow-hidden" />
+		<img
+			src={cartItem.image}
+			alt="Album"
+			class="rounded-lg h-full w-full object-contain overflow-hidden"
+		/>
 	</figure>
 	<div class="card-body">
 		<aside class="badge badge-primary">
@@ -36,8 +40,8 @@
 			</div>
 		</aside>
 		<div class="flex justify-between gap-4 items-center">
-			<p class="text-nowrap">Total: <b>{cartItem.amount}</b></p>
-			<p class="text-right text-nowrap">Quantity: <b>{cartItem.quantity}</b></p>
+			<p class="text-nowrap">Total:<br /> <b>{cartItem.amount}</b></p>
+			<p class="text-right text-nowrap">Quantity: <br /><b>{cartItem.quantity}</b></p>
 		</div>
 	</div>
 </div>
