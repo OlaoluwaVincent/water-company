@@ -3,11 +3,12 @@
 	import TrashCan from 'carbon-icons-svelte/lib/TrashCan.svelte';
 	import SubtractAltIcon from 'carbon-icons-svelte/lib/SubtractAlt.svelte';
 	import { decrement, deleteOnFromCart, increment, type CartItems } from '$lib/stores/cart';
+	import { formatCurrency } from '$lib/utils/formatters';
 
 	export let cartItem: CartItems;
 </script>
 
-<div class="card card-side bg-base-content text-base-100 shadow-xl max-w-lg mx-auto w-full">
+<div class="card card-side bg-base-content text-base-100 shadow-xl mx-auto w-full">
 	<figure class=" pl-1 md:pl-4 w-[120px] md:w-[200px] md:h-[200px] overflow-hidden">
 		<img src={cartItem.image} alt="Album" class="rounded-lg h-full w-full object-contain" />
 	</figure>
@@ -37,7 +38,7 @@
 		</aside>
 		<div class="flex justify-between gap-4 items-center">
 			<p class="text-nowrap">Qty: <b>{cartItem.quantity}</b></p>
-			<p class="text-nowrap text-right">Total: <b>{cartItem.amount}</b></p>
+			<p class="text-nowrap text-right">Total: <b>{formatCurrency(cartItem.amount)}</b></p>
 		</div>
 	</div>
 </div>

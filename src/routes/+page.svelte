@@ -32,7 +32,7 @@
 	<div
 		class="flex gap-3 justify-evenly py-20 px-2 md:px-10 min-h-28 text-primary-content text-center"
 	>
-		<article class="card bg-primary hover:bg-accent w-[100px]">
+		<article class="card bg-primary hover:bg-accent w-[100px] sm:w-[190px] tablet:w-[220px]">
 			<div class="card-body px-3 md:p-8">
 				<div class="flex items-center gap-4">
 					<CustomerServiceIcon class="size-5 lg:size-8" /> <span class="text-xl">40</span>
@@ -43,7 +43,7 @@
 			</div>
 		</article>
 
-		<article class="card bg-primary hover:bg-accent w-[100px]">
+		<article class="card bg-primary hover:bg-accent w-[100px] sm:w-[190px] tablet:w-[220px]">
 			<div class="card-body px-3 md:p-8">
 				<div class="flex items-center gap-4">
 					<DeliveryIcon class="size-5 lg:size-8" /> <span class="text-xl">40</span>
@@ -54,7 +54,7 @@
 			</div>
 		</article>
 
-		<article class="card bg-primary hover:bg-accent w-[100px]">
+		<article class="card bg-primary hover:bg-accent w-[100px] sm:w-[190px] tablet:w-[220px]">
 			<div class="card-body px-3 md:p-8">
 				<div class="flex items-center gap-4">
 					<LocationIcon class="size-5 lg:size-8" /> <span class="text-xl">40</span>

@@ -49,7 +49,7 @@
 
 	<div class="divider lg:divider-horizontal" />
 
-	<aside id="checkout" class="w-full flex-shrink-0 md:min-w-[220px] lg:min-w-[300px]">
+	<aside id="checkout" class="w-full flex-shrink-0 table:max-w-[220px] lg:max-w-[500px]">
 		<form on:submit|preventDefault={createOrder} class="prose">
 			<h3>Submit Order</h3>
 			<div>

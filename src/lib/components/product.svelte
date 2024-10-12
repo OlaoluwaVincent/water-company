@@ -6,6 +6,7 @@
 	import { clearMessage, message, saveToCart } from '$lib/stores/cart';
 	import Toast from './toast.svelte';
 	import type { ProductRes } from '$lib/types/type';
+	import { formatCurrency } from '$lib/utils/formatters';
 
 	export let product: ProductRes;
 
@@ -92,7 +93,7 @@
 				</aside>
 			</section>
 			<div class="flex justify-between gap-4 items-center">
-				<p>Total Cost: {totalCost}</p>
+				<p>Total Cost: {formatCurrency(totalCost)}</p>
 				<p class="text-right">Available Quantity: {product.quantity}</p>
 			</div>
 

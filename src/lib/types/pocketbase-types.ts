@@ -40,6 +40,7 @@ export type OrdersRecord<Torder = unknown> = {
 	order: null | Torder
 	outstanding: number
 	paymentStatus?: boolean
+	paymentType: string
 	user?: RecordIdString
 }
 
