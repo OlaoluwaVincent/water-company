@@ -20,7 +20,8 @@
 				order: listItems,
 				paymentStatus: false,
 				outstanding: total,
-				amount: total
+				amount: total,
+				paymentType:"unpaid"
 			})
 			.then(() => {
 				cartStore.set([]);
@@ -32,8 +33,6 @@
 			})
 			.finally(() => {
 				isLoading = false;
-				message = '';
-				console.log('submitted');
 			});
 	}
 </script>
@@ -72,7 +71,7 @@
 				<div class="flex items-center justify-between">
 					<p>Total: <b>{total}</b></p>
 
-					<button type="submit" disabled={$cartStore.length<=0} class="btn bg-success text-success-content">
+					<button type="submit" disabled={$cartStore.length<=0} class="btn bg-info text-info-content hover:bg-info-content hover:text-info">
 						{#if isLoading}
 							<span class="loading loading-spinner"></span>
 						{/if}
