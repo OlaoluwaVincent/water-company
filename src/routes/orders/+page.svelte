@@ -37,7 +37,7 @@
 {#if orders.length}
 	<div class="max-w-xl w-[90%] mx-auto space-y-4 my-8">
 		{#each orders as order, i}
-			<div class="card p-3 bg-gray-400 space-y-2">
+			<div class="card bg-secondary text-secondary-content p-3 space-y-2">
 				<div class="flex justify-between">
 					<p class="text-sm">{formatDate(order.created)}</p>
 					<p
