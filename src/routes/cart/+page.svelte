@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import ArrowRightIcon from 'carbon-icons-svelte/lib/ArrowRight.svelte';
 	import CartItem from '$lib/components/cartItem.svelte';
 	import Toast from '$lib/components/toast.svelte';
 	import pb from '$lib/config';
@@ -41,7 +42,17 @@
 	{#if message}
 		<Toast toast={message} on:clearToast={() => (message = '')} toastType="success" />
 	{/if}
+
 	<aside class="flex flex-col gap-8 w-full">
+		{#if !$cartStore.length || $cartStore.length <= 0}
+			<div class="flex items-center flex-col gap-20 justify-center">
+				<p>You have {$cartStore.length} item in your cart</p>
+				<a href="/services" class="btn link mx-auto hover:text-secondary-content"
+					>Add Items to cart <ArrowRightIcon size={24} /></a
+				>
+			</div>
+		{/if}
+
 		{#each $cartStore as cartItem, i}
 			<CartItem {cartItem} />
 		{/each}
@@ -61,7 +72,7 @@
 				<div class="flex items-center justify-between">
 					<p>Total: <b>{total}</b></p>
 
-					<button type="submit" class="btn bg-success text-success-content">
+					<button type="submit" disabled={$cartStore.length<=0} class="btn bg-success text-success-content">
 						{#if isLoading}
 							<span class="loading loading-spinner"></span>
 						{/if}
