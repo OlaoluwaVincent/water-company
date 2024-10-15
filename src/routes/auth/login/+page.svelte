@@ -4,13 +4,19 @@
 	let email = '';
 	let password = '';
 	let loading = false;
+	let err_message = '';
 
 	async function login() {
 		loading = true;
 		pb.collection('users')
 			.authWithPassword(email, password)
-			.catch((err) => console.log(err))
-			.then(() => (loading = false));
+			.catch((err: any) => {
+				err_message = err.message;
+				console.log(err);
+			})
+			.finally(() => {
+				loading = false;
+			});
 	}
 </script>
 
@@ -58,6 +64,9 @@
 					>Don't have an account? <span class="text-blue-500">Register</span></a
 				>
 				<div class="form-control mt-6">
+					{#if err_message}
+						<p class="text-error">{err_message}</p>
+					{/if}
 					<button type="submit" class="btn bg-primary">
 						{#if loading}
 							<span class="loading loading-spinner"></span>

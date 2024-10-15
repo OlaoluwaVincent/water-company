@@ -10,6 +10,7 @@ export interface OrdersTypePage {
 	orders: {
 		pendingOrder: OrdersResponse<unknown, unknown>[];
 		deliveredOrder: OrdersResponse<unknown, unknown>[];
+		incompletelyPaid: OrdersResponse<unknown, unknown>[];
 	} | null;
 }
 
@@ -22,20 +23,33 @@ export async function load(): Promise<OrdersTypePage> {
 		}
 
 		try {
-			const [orderOne, orderTwo] = await Promise.all([
+			const [orderOne, orderTwo, orderThree] = await Promise.all([
 				pb.collection('orders').getList(1, 50, {
-					filter: `deliveryStatus=false&&assigned="${user.id}"`,
+					filter: `paymentStatus=false&&deliveryStatus=false&&assigned="${user.id}"`,
 					requestKey: 'orderQueryOne',
+					sort: '-updated',
 					expand: 'user'
 				}),
 				pb.collection('orders').getList(1, 50, {
-					filter: `deliveryStatus=true&&assigned="${user.id}"`,
+					filter: `paymentStatus=true&&deliveryStatus=true&&assigned="${user.id}"`,
+					requestKey: 'orderQueryTwo',
+					sort: '-updated',
+					expand: 'user'
+				}),
+				pb.collection('orders').getList(1, 50, {
+					filter: `paymentStatus=false&&deliveryStatus=true&&assigned="${user.id}"`,
+					requestKey: 'orderQueryThree',
+					sort: '-updated',
 					expand: 'user'
 				})
 			]);
 
 			return {
-				orders: { pendingOrder: orderOne.items, deliveredOrder: orderTwo.items }
+				orders: {
+					pendingOrder: orderOne.items,
+					deliveredOrder: orderTwo.items,
+					incompletelyPaid: orderThree.items
+				}
 			};
 		} catch (error) {
 			console.error('Error fetching orders:', error);

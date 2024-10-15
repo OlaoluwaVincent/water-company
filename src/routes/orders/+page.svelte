@@ -2,14 +2,15 @@
 	import pb from '$lib/config';
 	import ArrowRightIcon from 'carbon-icons-svelte/lib/ArrowRight.svelte';
 	import type { OrderRes } from '$lib/types/type';
-	import { formatDate, formatCurrency } from '$lib/utils/formatters';
 	import OrderItem from '$lib/components/orderItem.svelte';
 
 	let orders: OrderRes[] = [];
 	let loading = true;
 
 	pb.collection('orders')
-		.getList()
+		.getList(1, 50, {
+			sort: '-updated'
+		})
 		.then((res) => {
 			orders = res.items as OrderRes[];
 			loading = false;
@@ -17,11 +18,6 @@
 		.finally(() => {
 			loading = false;
 		});
-
-	// pb.collection('orders').subscribe('outstanding', function (e) {
-	// 	console.log(e.action);
-	// 	console.log(e.record);
-	// });
 </script>
 
 {#if loading}

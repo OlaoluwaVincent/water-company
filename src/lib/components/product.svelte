@@ -7,6 +7,9 @@
 	import Toast from './toast.svelte';
 	import type { ProductRes } from '$lib/types/type';
 	import { formatCurrency } from '$lib/utils/formatters';
+	import Modal from './modal.svelte';
+	import type { UsersResponse } from '$lib/types/pocketbase-types';
+	import { goto } from '$app/navigation';
 
 	export let product: ProductRes;
 
@@ -43,7 +46,96 @@
 			title: product.title
 		});
 	}
+
+	$: showModal = false;
+	let drivers: UsersResponse<unknown>[];
+	let selectedDriver = '';
+	let isLoading = false;
+	let err_message = '';
+
+	const showModalFn = async () => {
+		if (!selectedBrand) return (errMessage = 'Please select a brand');
+
+		const res = await pb.collection('users').getList(1, 20, {
+			filter: 'role="driver"',
+			fields: 'name,id'
+		});
+		drivers = res.items;
+		showModal = true;
+	};
+
+	function handleSelectedUser(e: Event) {
+		const target = e.target as HTMLSelectElement;
+		selectedDriver = target.value;
+	}
+
+	function createOrder() {
+		isLoading = true;
+		if (!pb.authStore.model?.id) return goto('/auth/login');
+		pb.collection('orders')
+			.create({
+				user: pb.authStore.model?.id,
+				order: [
+					{
+						randomId: uuidv4(),
+						product: product.id,
+						amount: totalCost,
+						price: product.pricePerPack,
+						paymentStatus: false,
+						user: pb.authStore.model?.id,
+						quantity: quantity,
+						brand: selectedBrand,
+						image: pb.getFileUrl(product, product.image),
+						title: product.title
+					}
+				],
+				instant: true,
+				paymentStatus: false,
+				outstanding: totalCost,
+				amount: totalCost,
+				paymentType: 'unpaid',
+				assigned: selectedDriver
+			})
+			.then(() => {
+				err_message = 'Successful';
+			})
+			.catch((err) => {
+				console.log(err);
+				err_message = 'Failed to create Order';
+			})
+			.finally(() => {
+				isLoading = false;
+				showModal = false;
+			});
+	}
 </script>
+
+<Modal bind:showModal>
+	{#if err_message}
+		<p class="text-primary-content">{err_message}</p>
+	{/if}
+	<div class="flex items-center gap-3">
+		<p class="text-primary-content">Pay to:</p>
+		{#if drivers}
+			<select name="driver" id="driver" class="select select-sm" on:change={handleSelectedUser}>
+				<option value={''}>Select Driver</option>
+				{#each drivers as item}
+					<option value={item.id}>{item.name}</option>
+				{/each}
+			</select>
+		{:else}
+			<p>Loading drivers...</p>
+		{/if}
+	</div>
+	{#if err_message !== 'Successful'}
+		<button class="btn btn-sm btn-block mt-3" on:click={createOrder}>
+			{#if isLoading}
+				<span class="loading loading-spinner"></span>
+			{/if}
+			Pay {formatCurrency(totalCost)}
+		</button>
+	{/if}
+</Modal>
 
 <section class="px-5 max-w-3xl w-full mx-auto">
 	{#if $message}
@@ -99,7 +191,7 @@
 
 			<div class="card-actions justify-between mt-4">
 				<button class="btn btn-warning" on:click={() => addToCart(product)}>Add to Cart</button>
-				<button class="btn btn-success">Pay Now</button>
+				<button class="btn btn-success" on:click={showModalFn}>Pay Now</button>
 			</div>
 		</div>
 	</div>

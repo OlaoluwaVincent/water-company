@@ -37,6 +37,7 @@ export interface OrderItem {
 	paymentType: string;
 	updated: string;
 	user: string;
+	instant: boolean;
 }
 
 export interface User {

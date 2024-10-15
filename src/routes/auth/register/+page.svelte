@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import pb from '$lib/config';
 	let email: string = '';
 	let password: string = '';
@@ -26,9 +27,9 @@
 				name: fullname,
 				role: 'customer'
 			})
-			.then((res) => console.log(res))
+			.then(() => goto('/auth/login?email=' + email.toLowerCase))
 			.catch((err) => {
-				errMessage = err.data.data.email.message || err.data.message;
+				errMessage = err.data.data.email.message || err.data.data.name.message || err.data.message;
 			})
 			.finally(() => (isLoading = false));
 	}
@@ -106,7 +107,7 @@
 					>
 				</label>
 				<div class="form-control mt-6">
-					<button type="submit" class="btn btn-primary">
+					<button type="submit" disabled={isLoading} class="btn btn-primary">
 						{#if isLoading}
 							<span class="loading loading-spinner"></span>
 						{/if}

@@ -16,19 +16,21 @@
 	let acceptPayment = false;
 	let amount = 0;
 	let loading = false;
+	let instant_err = '';
 
 	function submitPayment() {
 		loading = true;
 		pb.collection('orders')
 			.update(order.id, {
-				outstanding: order.amount - (amount + order.amountPaid),
-				amountPaid: amount + order.amountPaid,
-				paymentStatus: order.amountPaid === order.amount,
+				outstanding: order.instant ? order.amount : order.amount - (amount + order.amountPaid),
+				amountPaid: order.instant ? order.amount : amount + order.amountPaid,
+				paymentStatus: order.instant ? true : amount == order.outstanding ? true : false,
 				deliveryStatus: true,
-				paymentType:
-					amount == order.outstanding
+				paymentType: order.instant
+					? 'paid'
+					: amount == order.outstanding
 						? 'paid'
-						: amount < order.outstanding
+						: order.outstanding > amount
 							? 'incomplete'
 							: 'unpaid'
 			})
@@ -46,6 +48,10 @@
 	<div class="card-body p-4">
 		<h4 class="flex items-center justify-between">
 			<span>{order.expand?.user.name}</span>
+			<span class={`badge text-white badge-sm badge-${order.deliveryStatus ? 'success' : 'error'}`}
+				>{order.deliveryStatus ? 'Delivered' : 'On-route'}</span
+			>
+
 			<span class={`badge badge-${statusColor} text-slate-900 badge-lg ml-5`}
 				>{order.paymentType}</span
 			>
@@ -68,7 +74,9 @@
 			>
 			{#if order.paymentType !== 'paid'}
 				<button
-					on:click={() => (acceptPayment = !acceptPayment)}
+					on:click={() => {
+						order.instant ? submitPayment() : (acceptPayment = !acceptPayment);
+					}}
 					class="underline underline-offset-2">Accept Payment</button
 				>
 			{/if}
@@ -85,7 +93,10 @@
 			</ul>
 		{/if}
 
-		{#if acceptPayment && order.paymentType !== 'paid'}
+		{#if acceptPayment && !order.instant && order.paymentType !== 'paid'}
+			{#if instant_err}
+				<p>Please collect payment in full</p>
+			{/if}
 			<label class="input input-bordered flex items-center gap-2 mt-2">
 				<input
 					type="number"

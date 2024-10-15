@@ -11,6 +11,7 @@
 	import pb from '$lib/config';
 	import userStore from '$lib/stores/user';
 	import userTheme from '$lib/stores/theme';
+	import { closeModal, Modals } from 'svelte-modals';
 
 	// Define protected routes
 	const protectedRoutes = ['/orders', '/driver'];
@@ -63,6 +64,12 @@
 
 			<Sidebar />
 		</section>
+
+		<Modals>
+			<!-- svelte-ignore a11y-no-static-element-interactions -->
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<div slot="backdrop" class="backdrop" on:click={closeModal} />
+		</Modals>
 	{/if}
 
 	{#if !isReady}
@@ -71,3 +78,14 @@
 		</section>
 	{/if}
 </div>
+
+<style>
+	.backdrop {
+		position: fixed;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		background: rgba(0, 0, 0, 0.5);
+	}
+</style>

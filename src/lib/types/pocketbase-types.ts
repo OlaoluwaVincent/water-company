@@ -40,6 +40,7 @@ export type OrdersRecord<Torder = unknown> = {
 	amountPaid?: number
 	assigned?: RecordIdString
 	deliveryStatus?: boolean
+	instant?: boolean
 	order: null | Torder
 	outstanding?: number
 	paymentStatus?: boolean

@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type { OrderRes } from "$lib/types/type";
-	import { formatCurrency, formatDate } from "$lib/utils/formatters";
+	import type { OrderRes } from '$lib/types/type';
+	import { formatCurrency, formatDate } from '$lib/utils/formatters';
 
-    export let order:OrderRes;
-    
-    let viewMore =false
+	export let order: OrderRes;
+
+	let viewMore = false;
 </script>
 
 <div class="card bg-secondary text-secondary-content p-3 space-y-2">
@@ -22,7 +22,7 @@
 		</p>
 	</div>
 	<div class="flex items-center justify-between">
-		<p>{order.order.length} item{order.order.length > 1 && 's'} ordered</p>
+		<p>{order.order.length} item{order.order.length > 1 ? 's' : ''} ordered</p>
 		<button on:click={() => (viewMore = !viewMore)} class="underline"
 			>{viewMore ? 'Hide' : 'View'} Items</button
 		>

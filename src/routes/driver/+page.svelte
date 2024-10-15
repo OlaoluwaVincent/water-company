@@ -7,6 +7,7 @@
 		orders: {
 			pendingOrder: OrderItem[];
 			deliveredOrder: OrderItem[];
+			incompletelyPaid: OrderItem[];
 		};
 	}
 
@@ -26,6 +27,18 @@
 		<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-3 space-y-5">
 			{#if data.orders.pendingOrder && data.orders.pendingOrder.length}
 				{#each data.orders.pendingOrder as order, i}
+					<DriverOrder {order} />
+				{/each}
+			{:else}
+				<p>You have not been assigned any order, contact management</p>
+			{/if}
+		</div>
+
+		<input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="Incomplete" />
+		<div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-3 space-y-5">
+			<h4>Kindly collect all payments</h4>
+			{#if data.orders.incompletelyPaid && data.orders.incompletelyPaid.length}
+				{#each data.orders.incompletelyPaid as order, i}
 					<DriverOrder {order} />
 				{/each}
 			{:else}
