@@ -11,7 +11,7 @@
 		"lint": "prettier --check .",
 		"format": "prettier --write .",
 		"gen-types": "./gen-types.sh",
-		"pb": "cd pocketbase && ./pocketbase serve"
+		"pb": "cd pocketbase && ./pocketbase serve --dev"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",

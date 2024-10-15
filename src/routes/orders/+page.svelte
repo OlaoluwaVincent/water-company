@@ -8,7 +8,6 @@
 	let orders: OrderRes[] = [];
 	let loading = true;
 
-
 	pb.collection('orders')
 		.getList()
 		.then((res) => {
@@ -18,6 +17,11 @@
 		.finally(() => {
 			loading = false;
 		});
+
+	// pb.collection('orders').subscribe('outstanding', function (e) {
+	// 	console.log(e.action);
+	// 	console.log(e.record);
+	// });
 </script>
 
 {#if loading}
@@ -38,7 +42,7 @@
 {#if orders.length}
 	<div class="max-w-xl w-[90%] mx-auto space-y-4 my-8">
 		{#each orders as order, i}
-			<OrderItem {order}/>
+			<OrderItem {order} />
 		{/each}
 	</div>
 {/if}

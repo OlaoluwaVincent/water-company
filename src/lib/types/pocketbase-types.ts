@@ -37,8 +37,11 @@ export type AuthSystemFields<T = never> = {
 
 export type OrdersRecord<Torder = unknown> = {
 	amount: number
+	amountPaid?: number
+	assigned?: RecordIdString
+	deliveryStatus?: boolean
 	order: null | Torder
-	outstanding: number
+	outstanding?: number
 	paymentStatus?: boolean
 	paymentType: string
 	user?: RecordIdString

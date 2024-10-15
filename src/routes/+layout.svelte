@@ -13,7 +13,7 @@
 	import userTheme from '$lib/stores/theme';
 
 	// Define protected routes
-	const protectedRoutes = ['/orders'];
+	const protectedRoutes = ['/orders', '/driver'];
 
 	// Check if a route is protected
 	function isRouteProtected(route: string) {
@@ -31,7 +31,11 @@
 				browser &&
 				isRouteProtected($page.url.pathname)
 			) {
-				goto('/auth/login?prev='+$page.url.pathname);
+				goto('/auth/login?prev=' + $page.url.pathname);
+			}
+
+			if (pb.authStore.model?.role === 'driver') {
+				return goto('/driver');
 			}
 		})();
 

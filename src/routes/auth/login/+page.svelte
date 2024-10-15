@@ -1,14 +1,16 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import pb from '$lib/config';
 
 	let email = '';
 	let password = '';
+	let loading = false;
 
 	async function login() {
+		loading = true;
 		pb.collection('users')
 			.authWithPassword(email, password)
-			.catch((err) => console.log(err));
+			.catch((err) => console.log(err))
+			.then(() => (loading = false));
 	}
 </script>
 
@@ -56,7 +58,12 @@
 					>Don't have an account? <span class="text-blue-500">Register</span></a
 				>
 				<div class="form-control mt-6">
-					<button class="btn btn-primary">Login</button>
+					<button type="submit" class="btn bg-primary">
+						{#if loading}
+							<span class="loading loading-spinner"></span>
+						{/if}
+						Login
+					</button>
 				</div>
 			</form>
 		</div>
