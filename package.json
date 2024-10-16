@@ -39,6 +39,7 @@
 		"marked": "^14.1.2",
 		"pocketbase": "^0.21.5",
 		"pocketbase-typegen": "^1.2.1",
+		"svelteone": "link:",
 		"uuid": "^10.0.0"
 	}
 }
